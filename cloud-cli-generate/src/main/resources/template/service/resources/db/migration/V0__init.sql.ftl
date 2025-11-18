@@ -1,0 +1,3 @@
+-- Flyway baseline placeholder
+-- 在此添加初始化 DDL/DML，例如创建表或填充基础数据。
+-- 生成后可删除本文件或替换为实际迁移脚本。
