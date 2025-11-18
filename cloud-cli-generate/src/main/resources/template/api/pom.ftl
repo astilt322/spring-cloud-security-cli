@@ -53,5 +53,11 @@
             <artifactId>${parent.childModuleDirPrefix}-security</artifactId>
             <version><#noparse>$</#noparse>{${parent.childModuleDirPrefix}-version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+            <#noparse><version>${knife4j.version}</version></#noparse>
+        </dependency>
     </dependencies>
 </project>

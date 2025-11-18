@@ -1,4 +1,4 @@
-<#if parent.mode! == '0'>
+<#-- 公共配置：各模式都需要数据库/Redis/JWT/ES等基础配置 -->
 spring:
   servlet:
     multipart:
@@ -25,6 +25,19 @@ spring:
       port: 6379
       database: 0
       # password:
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:db/migration
+    table: flyway_schema_history
+<#if parent.mode?string != '0'>
+  application:
+    name: ${parent.applicationName}
+  profiles:
+    active: dev
+</#if>
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
   global-config:
@@ -47,17 +60,8 @@ es:
   host: localhost
   scheme: http
 
-<#else>
-spring:
-  profiles:
-    active: dev
-
-  application:
-    name: ${parent.applicationName}
-
 logging:
-  config: classpath:logback-dev.xml
+  config: <#if parent.mode?string == '0'>classpath:logback.xml<#else>classpath:logback-dev.xml</#if>
 
 server:
   port: 9901
-</#if>

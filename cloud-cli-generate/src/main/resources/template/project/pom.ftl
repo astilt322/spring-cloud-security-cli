@@ -34,12 +34,14 @@
         <jsoup.version>1.15.3</jsoup.version>
         <mybatis-plus.version>3.5.0</mybatis-plus.version>
         <mybatis-plus-boot3.version>3.5.5</mybatis-plus-boot3.version>
+        <knife4j.version>4.4.0</knife4j.version>
         <log4j.version>2.20.0</log4j.version>
         <#if mode == "1">
         <cloud-alibaba-version>2022.0.0.0</cloud-alibaba-version>
         </#if>
         <fast.json-version>2.0.46</fast.json-version>
         <mysql.connector-version>8.0.33</mysql.connector-version>
+        <flyway.version>9.22.3</flyway.version>
         <${childModuleDirPrefix}-version><#if version! != ''>${version} <#else>1.0.0-SNAPSHOT</#if></${childModuleDirPrefix}-version>
         <swagger-version>2.0.0-rc2</swagger-version>
         <redisson.version>3.19.3</redisson.version>
@@ -53,6 +55,62 @@
         <aspectj.version>1.9.21</aspectj.version>
         <freemark.version>2.3.31</freemark.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>aliyun-public</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun-spring</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>tencent-public</id>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun-public-plugins</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>tencent-public-plugins</id>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencyManagement>
         <dependencies>
@@ -165,9 +223,21 @@
             </dependency>
 
             <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <#noparse><version>${flyway.version}</version></#noparse>
+            </dependency>
+
+            <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <#noparse><version>${okhttp-version}</version></#noparse>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <#noparse><version>${knife4j.version}</version></#noparse>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->

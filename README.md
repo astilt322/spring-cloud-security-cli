@@ -42,6 +42,10 @@ spring-cloud-security-cli
 
 *以上均包含服务层、安全认证、通用、实体类、API模块*
 
+## 构建与仓库镜像
+默认的父级 POM 已集成阿里云、腾讯公共仓库作为 Maven 镜像，便于在网络受限环境下拉取依赖与插件。若本地仍出现 403/timeout，可检查本地 `~/.m2/settings.xml` 中的 `<mirrors>` 配置，避免覆盖或关闭这些镜像；也可以将镜像 URL 追加到公司内部 Nexus/Artifactory 的代理列表中，以继承统一出口策略。
+
+
 ## REST API生成项目
 1.运行cloud-cli-generate模块的GeneratorApplication
 
